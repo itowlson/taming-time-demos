@@ -73,6 +73,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FileSystem.cs" />
+    <Compile Include="MouseDemo.xaml.cs">
+      <DependentUpon>MouseDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="FileSystemDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MouseDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

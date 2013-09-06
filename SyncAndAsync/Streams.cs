@@ -30,7 +30,7 @@ namespace SyncAndAsync
         {
             var ys = xs.Where(x => cond(x))
                        .Select(x => f(x))
-                       .Where(y => y(cond2(y));
+                       .Where(y => cond2(y));
         }
 
         public static async void /* <-- ??? */ Async2a_AsynchronousGenerator()

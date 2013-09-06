@@ -8,9 +8,9 @@ namespace RxPlayground
 {
     public class ValueOrError<T>
     {
-        public enum Kind { Value, Error };
+        public enum ValueOrErrorKind { Value, Error };
 
-        public Kind Kind { get; set; }
+        public ValueOrErrorKind Kind { get; set; }
 
         public T Value { get; set; }
         public Exception Error { get; set; }
@@ -18,9 +18,9 @@ namespace RxPlayground
 
     public class ValueOrEndOrError<T>
     {
-        public enum Kind { Value, End, Error };
+        public enum ValueOrEndOrErrorKind { Value, End, Error };
 
-        public Kind Kind { get; set; }
+        public ValueOrEndOrErrorKind Kind { get; set; }
 
         public T Value { get; set; }
         public Exception Error { get; set; }

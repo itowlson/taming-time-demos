@@ -73,6 +73,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FileSystem.cs" />
+    <Compile Include="ManualDemo.xaml.cs">
+      <DependentUpon>ManualDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MouseDemo.xaml.cs">
       <DependentUpon>MouseDemo.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="FileSystemDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManualDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

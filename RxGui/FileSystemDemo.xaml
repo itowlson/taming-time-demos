@@ -4,7 +4,11 @@
         Title="File System"
         Height="480" Width="640">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <TextBlock Text="{Binding LastChange}" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" />
-        <!--<ListBox x:Name="fileSystemEventList" ItemsSource="{Binding Events}" />-->
+        <ListBox Grid.Row="1" x:Name="fileSystemEventList" ItemsSource="{Binding Events}" />
     </Grid>
 </Window>

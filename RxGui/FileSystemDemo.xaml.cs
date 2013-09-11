@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
@@ -30,17 +31,29 @@ namespace RxGui
 
             DataContext = _viewModel;
 
-            FileSystem.WhatsHappeningIn("d:\\temp")
-                      .Select(e => e.ChangeType + ": " + e.Name)
-                      .Subscribe(s => { _viewModel.LastChange = s; });
+            var tempFolder = "c:\\temp2";
+            IObservable<FileSystemEventArgs> tempFolderEvents =
+                FileSystem.WhatsHappeningIn(tempFolder);
 
-            //FileSystem.WhatsHappeningIn("d:\\temp")
-            //          .Select(e => e.ChangeType + ": " + e.Name)
-            //          .Subscribe(s => _viewModel.Events.Add(s));
+            var myFileCreationEvents = tempFolderEvents
+                .Where(f => f.ChangeType == WatcherChangeTypes.Created)
+                .Select(f => new { f.ChangeType, f.Name })
+                .Where(c => c.Name.StartsWith("my"));
 
-            //FileSystem.WhatsHappeningIn("d:\\temp")
-            //          .Select(e => e.ChangeType + ": " + e.Name)
-            //          .Subscribe(s => fileSystemEventList.Items.Add(s));
+
+
+
+            tempFolderEvents
+                .Select(e => e.ChangeType + ": " + e.Name)
+                .Subscribe(s => { _viewModel.LastChange = s; });
+
+            //tempFolderEvents
+            //    .Select(e => e.ChangeType + ": " + e.Name)
+            //    .Subscribe(s => _viewModel.Events.Add(s));
+
+            //tempFolderEvents
+            //    .Select(e => e.ChangeType + ": " + e.Name)
+            //    .Subscribe(s => fileSystemEventList.Items.Add(s));
         }
     }
 

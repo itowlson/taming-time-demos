@@ -10,6 +10,7 @@ namespace SyncAndAsync
     {
         static IEnumerable<int> xs = new[] { 1, 2, 3, 4, 5 };
         static Func<int, string> f = n => n.ToString();
+        static Func<int, Task<string>> fAsync = n => Task.FromResult(n.ToString());
         static Func<int, bool> cond = n => n % 2 == 0;
         static Func<string, bool> cond2 = s => s.Length > 4;
 
@@ -23,7 +24,7 @@ namespace SyncAndAsync
         {
             // ???
 
-            // xs.Select(x => async x => await f(x));  // NO! NO! NO! (pulls from synchronous stream, rather than being pushed by asynchronous stream)
+            // var ts = xs.Select(async x => await fAsync(x));  // NO! NO! NO! (pulls from synchronous stream, rather than being pushed by asynchronous stream)
         }
 
         public static void Sync2()

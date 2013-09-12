@@ -32,7 +32,7 @@ namespace RxGui
 
             DataContext = _viewModel;
 
-            var locations = GetLocationStreamFromChunkyGenerator();
+            var locations = GetLocationStreamFromExplicitCreation();
 
             //var locations = GetLocationStreamFromChunkyGenerator();
 
@@ -65,6 +65,7 @@ namespace RxGui
                     observer.OnNext(new Point(100, 150));
                     Thread.Sleep(250);
                 }
+                observer.OnCompleted();
                 return Disposable.Empty;
             });
             return locations;
